@@ -1,5 +1,5 @@
 # About
-Bailey is a basil plant that I display live on my Twitch.
+Bailey is a basil plant that I display live on my Twitch. A follow will sprinkle some water on Bailey while a subscribe will flood Bailey's pot with water.
 
 # Listen for Events on StreamLabs
 ## Installing SocketIO
