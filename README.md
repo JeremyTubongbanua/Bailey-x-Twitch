@@ -93,6 +93,18 @@ To reboot, do:
 $ sudo reboot
 ```
 
+## rc.local
+**rc.local** is one way of booting up a python script when the raspberry pi boots up. Located in the /etc directory, you can do:
+```
+$ sudo nano rc.local
+```
+
+and add this line
+(change app.py with the directory of the script you want to run)
+```
+sudo python ../home/pi/app.py
+```
+
 # Electronics
 The submerssible DC motors that pump water into the plant: https://www.amazon.ca/gp/product/B07TMW5CDM/ref=ppx_yo_dt_b_asin_title_o07_s00?ie=UTF8&psc=1.
 DC motors cannot be activated with a GPIO pin. So I use a PNP transistor with Base connected to a GPIO pin. I essentially use a PNP transistor as a switch for the DC motor. 
