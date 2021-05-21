@@ -1,11 +1,19 @@
 # Table of Contents
 - [About](#about)
-- [Listen for Events on StreamLabs](#listen-for-events-on-streamLabs)
+- [Alerts on StreamLabs (Node.js)](#listen-for-events-on-streamLabs)
   * [Installing SocketIO](#installing-socketio)
   * [Implementing SocketIO](#implementing-socketio)
   * [Getting SocketAPI Token](#getting-socketapi-token)
   * [Event Example](#event-example)
   * [StreamLabs SocketAPI Docs](#streamlabs-socketapi-docs)
+- [Raspberry Pi Zero](#raspberry-pi-zero)
+  * [Setting up R-Pi Zero](#setting-up-r-pi-zero)
+  * [Setting up SSH](#setting-up-ssh-for-headless--wireless-setup-only)
+  * [SSH Command Lines](#ssh-lines)
+  * [rc.local](#rclocal)
+  * [Wiring & Electronics](#electronics)
+- [Twitch Chat Bot](#chat-botjs)
+
 # About
 Bailey is a basil plant that I display live on my Twitch. A follow will sprinkle some water on Bailey while a subscribe will flood Bailey's pot with water.
 
@@ -122,4 +130,6 @@ Pretend Arduino is your R-Pi and the Base is connected to a GPIO pin. Sending a 
 
 # Chat-Bot.js
 My project isn't focused on the chat bot. If you want to make one yourself, 
-a very straightforward tutorial can be found here: https://dev.twitch.tv/docs/irc
+a very straightforward tutorial can be found here: https://dev.twitch.tv/docs/irc.
+
+EDIT: Chat Bot component of my project now has a command that will send http request to water bailey.
