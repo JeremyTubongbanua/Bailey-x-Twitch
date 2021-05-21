@@ -1,3 +1,11 @@
+# Table of Contents
+- [About](#about)
+- [Listen for Events on StreamLabs](#listen-for-events-on-streamLabs)
+  * [Installing SocketIO](#installing-socketio)
+  * [Implementing SocketIO](#implementing-socketio)
+  * [Getting SocketAPI Token](#getting-socketapi-token)
+  * [Event Example](#event-example)
+  * [StreamLabs SocketAPI Docs](#streamlabs-socketapi-docs)
 # About
 Bailey is a basil plant that I display live on my Twitch. A follow will sprinkle some water on Bailey while a subscribe will flood Bailey's pot with water.
 
@@ -22,7 +30,7 @@ const streamlabs = io(
 );
 ```
 
-## Getting SocketAPI 
+## Getting SocketAPI Token
 To get your Socket API Token, go to https://streamlabs.com/dashboard. Settings (bot left) > API Settings > API Tokens > Your Socket API Token.
 
 ## Event Example
