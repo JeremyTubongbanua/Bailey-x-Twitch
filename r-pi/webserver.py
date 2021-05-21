@@ -5,7 +5,9 @@ from time import sleep
 # definitions
 ledGreen = 26
 motor = 20
+command_seconds = 3
 follower_seconds = 4
+subscriber_seconds = 5
 
 # setup
 app = flask.Flask(__name__)
@@ -27,12 +29,14 @@ for i in range(5):
 # listen for /actions (eg: 192.168.0.109/follow)
 @app.route("/<action>")
 def action(action):
-	if action=="follow" or action=="subscribe":
+	if action=="follow" or action=="subscribe" or action=="command":
 		GPIO.output(ledGreen, GPIO.HIGH)
 		GPIO.output(motor, GPIO.HIGH)
 		amount = follower_seconds
 		if action=="subscribe":
-			amount = 5
+			amount = subscriber_seconds
+		if action=="command":
+			amount = command_seconds
 		sleep(amount)
 		GPIO.output(motor, GPIO.LOW)
 		GPIO.output(ledGreen, GPIO.LOW)

@@ -1,4 +1,6 @@
 const tmi = require("tmi.js");
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
 // Define configuration options
 const opts = {
 	identity: {
@@ -18,6 +20,16 @@ client.on("connected", onConnectedHandler);
 // Connect to Twitch:
 client.connect();
 
+const read = readTextFile("file://C:\\Users\\madiv\\Desktop\\GitHub\\Bailey-x-Twitch\\stream-labs\\whitelist.txt").split('\n');
+var whitelist = [];
+for (var i in read) {
+	const name = read[i];
+	if (name.length > 1) {
+		whitelist.push(name.substring(0, name.length - 1));
+	}
+}
+console.log(whitelist);
+
 // Called every time a message comes in
 function onMessageHandler(target, context, msg, self) {
 	if (self) {
@@ -26,11 +38,13 @@ function onMessageHandler(target, context, msg, self) {
 
 	// Remove whitespace from chat message
 	const commandName = msg.trim();
+	const noHashTagName = target.substring(1, target.length);
+	console.log(noHashTagName);
 
 	// If the command is known, let's execute it
 	if (commandName === "!dice") {
 		const num = rollDice();
-		client.say(target, `You rolled a ${num} (1-6)`);
+		client.say(target, `@${noHashTagName} You rolled a ${num} (1-6)`);
 	} else if (commandName === "!ign") {
 		client.say(target, `My MC ign is MarkIsCool`);
 	} else if (commandName === "!specs") {
@@ -38,7 +52,23 @@ function onMessageHandler(target, context, msg, self) {
 			"CPU: Ryzen 5 3600, 1050 Ti 4GB, 16GB RAM, Samsung 970 500GB SSD";
 		client.say(target, specs);
 	} else if (commandName === "!debug") {
-		console.log(msg);
+	} else if (commandName === "!water") {
+		if(whitelist.includes(noHashTagName)) {
+			const baseUrl = "http://192.168.0.104/"
+			var xhr = new XMLHttpRequest();
+			var url = baseUrl + "command";
+			xhr.open("GET", url);
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState === 4) {
+					console.log(xhr.status);
+					console.log(xhr.responseText);
+				}
+			};
+			xhr.send();
+			client.say(target, `@${noHashTagName} Thanks for watering Bailey! (Watered for 3 seconds)`)
+		} else {
+			client.say(target, `@${noHashTagName} You are not whitelisted. Claim the "Give me power" channel points reward for 1000 fruit berries to be whitelisted.`);
+		}
 	}
 	console.log(`* Executed ${commandName} command`);
 }
@@ -52,4 +82,20 @@ function rollDice() {
 // Called every time the bot connects to Twitch chat
 function onConnectedHandler(addr, port) {
 	console.log(`* Connected to ${addr}:${port}`);
+}
+
+function readTextFile(file) {
+	var rawFile = new XMLHttpRequest();
+	var allText;
+	rawFile.open("GET", file, false);
+	rawFile.onreadystatechange = function () {
+		if (rawFile.readyState === 4) {
+			if (rawFile.status === 200 || rawFile.status == 0) {
+				allText = rawFile.responseText;
+			}
+		}
+	}
+	rawFile.send(null);
+	return allText;
+
 }

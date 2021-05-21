@@ -57,6 +57,19 @@ streamlabs.on("event", (eventData) => {
 		var donobj = eventData.message;
 		var dononame = donobj[0].name;
 		var donoamo = donobj[0].amount;
+		var followobj = eventData.message;
+		var followname = followobj[0].name;
+		var xhr = new XMLHttpRequest();
+		var url = baseUrl + "follow";
+		console.log(followname);
+		xhr.open("GET", url);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4) {
+				console.log(xhr.status);
+				console.log(xhr.responseText);
+			}
+		};
+		xhr.send();
 	}
 	if (eventData.for === "twitch_account" && eventData.type == "raid") {
 		var raidobj = eventData.message;
@@ -64,5 +77,18 @@ streamlabs.on("event", (eventData) => {
 		var raidviews = raidobj[0].raiders;
 		console.log(raidname);
 		console.log(raidviews);
+		var followobj = eventData.message;
+		var followname = followobj[0].name;
+		var xhr = new XMLHttpRequest();
+		var url = baseUrl + "follow";
+		console.log(followname);
+		xhr.open("GET", url);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4) {
+				console.log(xhr.status);
+				console.log(xhr.responseText);
+			}
+		};
+		xhr.send();
 	}
 });
