@@ -65,7 +65,7 @@ function onMessageHandler(target, context, msg, self) {
 				}
 			};
 			xhr.send();
-			client.say(target, `@${noHashTagName} Thanks for watering Bailey! (Watered for 3 seconds)`)
+			client.say(target, `Thanks for watering Bailey!`)
 		} else {
 			client.say(target, `@${noHashTagName} You are not whitelisted. Claim the "Give me power" channel points reward for 1000 fruit berries to be whitelisted.`);
 		}
