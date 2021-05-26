@@ -16,8 +16,8 @@ var baseUrl = "http://192.168.0.104/"; // ======= BASE URL =============
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 streamlabs.on("event", (eventData) => {
-	// console.log(eventData);
-	if (eventData.for === "twitch_account" && eventData.type == "follow") {
+	console.log(eventData);
+	if (eventData.for === "twitch_account" && (['follow', 'bits', 'host', 'donation', 'raid'].includes(eventData.type))) {
 		console.log("New follower:");
 		var followobj = eventData.message;
 		var followname = followobj[0].name;
@@ -37,51 +37,6 @@ streamlabs.on("event", (eventData) => {
 		// console.log("New subscriber!");
 		var xhr = new XMLHttpRequest();
 		var url = baseUrl + "subscribe";
-		xhr.open("GET", url);
-		xhr.onreadystatechange = function () {
-			if (xhr.readyState === 4) {
-				console.log(xhr.status);
-				console.log(xhr.responseText);
-			}
-		};
-		xhr.send();
-	}
-	if (eventData.for === "twitch_account" && eventData.type == "host") {
-		var hostobj = eventData.message;
-		var hostname = hostobj[0].name;
-		var hostviews = hostobj[0].viewers;
-		console.log(hostname);
-		console.log(hostviews);
-	}
-	if (eventData.for === "streamlabs" && eventData.type == "donation") {
-		var donobj = eventData.message;
-		var dononame = donobj[0].name;
-		var donoamo = donobj[0].amount;
-		var followobj = eventData.message;
-		var followname = followobj[0].name;
-		var xhr = new XMLHttpRequest();
-		var url = baseUrl + "follow";
-		console.log(followname);
-		xhr.open("GET", url);
-		xhr.onreadystatechange = function () {
-			if (xhr.readyState === 4) {
-				console.log(xhr.status);
-				console.log(xhr.responseText);
-			}
-		};
-		xhr.send();
-	}
-	if (eventData.for === "twitch_account" && eventData.type == "raid") {
-		var raidobj = eventData.message;
-		var raidname = raidobj[0].name;
-		var raidviews = raidobj[0].raiders;
-		console.log(raidname);
-		console.log(raidviews);
-		var followobj = eventData.message;
-		var followname = followobj[0].name;
-		var xhr = new XMLHttpRequest();
-		var url = baseUrl + "follow";
-		console.log(followname);
 		xhr.open("GET", url);
 		xhr.onreadystatechange = function () {
 			if (xhr.readyState === 4) {
