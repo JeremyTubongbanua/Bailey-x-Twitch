@@ -24,6 +24,10 @@ This part is a bit tricky. I spent a bunch of time trying to connect NodeJS & Tw
 ```
 npm install socket.io-client@2.3.1
 ```
+Installing JSON library as well:
+```
+npm install --save jsonfile
+```
 
 ## Implementing SocketIO
 To connect to StreamLabs using SocketIO, simply copy the following:
