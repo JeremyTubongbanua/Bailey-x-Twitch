@@ -17,6 +17,8 @@
 # About
 Bailey is a basil plant that I display live on my Twitch. A follow will sprinkle some water on Bailey while a subscribe will flood Bailey's pot with water.
 
+https://www.youtube.com/watch?v=76K0j2CXyxc
+
 # Listen for Events on StreamLabs
 ## Installing SocketIO
 This part is a bit tricky. I spent a bunch of time trying to connect NodeJS & Twitch realizing that I did not use the correct version. The newer versions do not work the way you want to. Use this line instead:
